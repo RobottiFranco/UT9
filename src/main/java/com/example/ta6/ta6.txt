@@ -1,0 +1,14 @@
+1. ¿Cuáles son las operaciones básicas involucradas en estos dos algoritmos?
+Las operaciones básicas son: inserta, suprimeMinimo, desplazaElemento.
+
+2. ¿Cuál es el orden de estas operaciones cuando el árbol APO se representa en la forma estándar (árbol
+binario)? (analizarlo a alto nivel)
+Como árbol binario, inserta, suprimeMinimo y
+desplazaElemento tendrán un O(logn), ya que recorre un árbol balanceado
+
+
+3. ¿Cuál es el orden de estas operaciones cuando el árbol APO se representa mediante un vector con
+posiciones de 1 a N?
+En un vector, insertar será de O(1) mientras no se redimensione.
+Por otro lado, suprimeMinimo será de O(1), ya que es un intercambio.
+Y por último, desplazaElemento también será de O(1), ya que es un intercambio.

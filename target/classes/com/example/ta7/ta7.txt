@@ -1,0 +1,48 @@
+EJERCICIO 1.2 HEAPSORT
+1   2   3   4   5   6	   7   8   9   10  11  12  13  14  15  16	C	M
+5T, 0C, 5U, 0O, 9!, 1N, 8S, 2R, 6A, 4A, 1G, 5L, 6T, 6I, 7O, 7N
+0C, 5T, 1N, 0O, 1G, 5U, 6I, 2R, 6A, 4A, 9!, 5L, 6T, 8S, 7O, 7N	15	4 --> APO
+---------------------------------------------------------------
+0O, 7N, 1N, 5T, 1G, 5U, 6I, 2R, 6A, 4A, 9!, 5L, 6T, 8S, 7O | 0C 14	3
+1N, 1G, 7O, 2R, 7N, 5U, 6I, 5T, 6A, 4A, 9!, 5L, 6T, 8S | 0O, 0C 13	4
+1G, 8S, 5U, 2R, 4A, 7O, 6I, 5T, 6A, 7N, 9!, 5L, 6T | 1N, 0O, 0C	12	4
+2R, 6T, 5U, 8S, 4A, 5L, 6I, 5T, 6A, 7N, 9!, 7O | 1G, 1N, 0O, 0C	11	4
+4A, 7O, 5U, 5T, 6T, 5L, 6I, 8S, 6A, 7N, 9! | 2R, 1G, 1N, 0O, 0C	10	4
+5U, 5T, 9!, 7O, 6T, 5L, 6I, 8S, 6A, 7N | 4A, 2R, 1G, 1N, 0O, 0C 9	3
+5L, 5T, 7N, 6A, 6T, 9!, 6I, 8S, 7O | 5U, 4A, 2R, 1G, 1N, 0O, 0C	8	4
+5T, 7O, 6I, 6A, 6T, 9!, 7N, 8S | 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C 7	3
+6I, 6T, 8S, 6A, 7O, 9!, 7N | 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	6	3
+6T, 7N, 8S, 6A, 7O, 9! | 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	5	2
+6A, 9!, 8S, 7N, 7O | 6T, 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	4	3
+7O, 7N, 8S, 9! | 6A, 6T, 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	3	2
+7N, 9!, 8S | 7O, 6A, 6T, 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	2	2
+8S, 9! | 7N, 7O, 6A, 6T, 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C 1	1
+9! | 8S, 7N, 7O, 6A, 6T, 6I, 5T, 5L, 5U, 4A, 2R, 1G, 1N, 0O, 0C	0	1
+
+comparación entre cuenta por distribución y heapsort:
+heapsort tiene 48 movimientos y 120 comparaciones.
+cuenta por distribución no tiene ni comparaciones ni movimientos, ya que son siempre asignaciones.
+Por lo que en este caso, conviene el uso de cuenta por distribución, además conviene porque
+heapsort no es estable, como se ve, quedó CONGRAULTITAONS! y no CONGRATULATIONS! como en cuenta
+por distribución.
+
+EJERCICIO 1.3
+Es un algoritmo estable, como se ve en la imagen. Las claves con
+el mismo valor, terminaron en el mismo orden en el que llegaron, es por
+ello que se formó correctamente la palabra.
+
+EJERCICIO 1.4
+CuentaPorDistribución
+begin
+for i = u to v hacer Cuenta[i] = 0		O(u,v)
+for j = 1 to N incrementar Cuenta[Kj]		O(n)
+for i = u +1 to v 					O(u,v)
+  Cuenta[i] = Cuenta[i] + Cuenta[i-1]		O(1)
+for j = N downto 1 hacer				O(n)
+  i = Cuenta[Kj]					O(1)
+  S[i ] = R[j ]						O(1)
+  Cuenta[Kj] = i-1					O(1)
+end
+
+El orden del tiempo de ejecución, es por regla de la suma O(u,v) + O(n), por
+lo que será de O(n), ya que O(u,v) es un subconjunto de n.

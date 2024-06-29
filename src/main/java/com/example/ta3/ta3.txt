@@ -1,0 +1,85 @@
+EJERCICIO 1 - 3 FORMAS POSIBLES DE "encuentraPivote"
+
+ALEATORIO
+LN: este algoritmo hallará el pivote de manera aleatoria, es decir,
+el pivote estará en la posición que devuelva respecto al vector.
+PRECONDICIONES:
+-se pasa correctamente el min y max del vector
+POSTCONDICIONES:
+-devuelve la posición del pivote
+
+PSEUDOCÓDIGO
+encuentraPivoteAleatorio( min, max : entero) : entero
+COM
+	resultado <- nuevo Random					O(1)
+	pivote <- resultado.ObtenerRandom(min, max)	O(1)
+	devolver pivote							O(1)
+FIN
+
+El orden del tiempo de ejecución es de O(1)+O(1), por regla de la suma
+es de O(1).
+
+Este algoritmo será siempre de O(1), pero el problema hallado respecto a su
+utilización junto al Quicksort, es que hay probabilidad de que no devuelva
+un número que separe el conjunto en dos subconjuntos de aproximadamente el
+mismo tamaño, por lo que el Quicksort podría en el peor caso ser de O(n^2)
+
+
+MEDIANA
+LN: este algoritmo hallará el valor mediana del vector, para ello ordenará
+el vector, y luego devolverá el valor que está en medio.
+PRECONDICIONES:
+-se pasa correctamente el indice de comienzo y fin del vector, además del vector
+POSTCONDICIONES:
+-devuelve el pivote de manera precisa
+
+PSEUDOCÓDIGO
+encuentraPivoteMediana(entrada : vector, i,j : entero) : entero
+COM
+	rango <- entrada.subRango(i,j)		O(1)
+	copiaRango <- rango.copia()		O(n)
+	rango.ordenar()					O(n*logn)
+	mediana <- rango[(rango.largo-1)/2] 	O(1)
+	pos <- i						O(1)
+	MIENTRAS (pos < rango.largo Y copiaRango[pos] <> mediana) HACER O(m) siendo m el largo de rango
+		pos++ 					O(1)
+	FIN MIENTRAS
+	devolver pos					O(1)
+FIN
+
+El orden del tiempo de ejecución, por regla de la suma, es de O(n*logn) + O(m),
+por lo que es O(n*logn)
+
+Este algoritmo tiene un orden muy alto, pero hallará el pivote perfecto. El
+gran problema está en que enlentece el algoritmo.
+
+
+MEDIO ENTRE 3 VALORES
+LN: este algortimo tomará el primero, ultimo y valor medio del vector, y
+devovlerá como pivote la ubicación del que tiene un valor medio entre los tres.
+PRECONDICIONES:
+-se pasa correctamente el rango en el vector
+POSTCONDICINES:
+-devuelve el que tiene el valor entre medio de los otros dos
+
+PSEUDOCÓDIGO
+encuentraPivoteMedio(entrada : vector, primero,ultimo: entero) : entero
+COM
+	medio <- primero + ((ultimo-primero)/2)	O(1)
+     vPrimero <- entrada[primero]			O(1)
+     vMedio <- entrada[medio]				O(1)
+     vUltimo <- entrada[ultimo]				O(1)
+	SI vPrimero <= vMedio Y vMedio < vUltimo O vPrimero >= vMedio Y vMedio > vUltimo ENTONCES O(1)
+		devolver medio		O(1)
+	SINO SI vMedio < vPrimero Y vPrimero <= vUltimo O vMedio > vPrimero Y vPrimero >= vUltimo ENTONCES
+		devolver primero	O(1)
+	SINO
+		devolver ultimo		O(1)
+	FIN SI
+FIN
+
+El orden del tiempo de ejecución es por regla de la suma O(1)+O(1), lo cual es O(1)
+
+Respecto a Quicksort, es mucho menos probable que el valor elegido sea siempre uno de los extremos
+en comparación al aleatorio, pero siguen existiendo las chances, por lo que en el peor caso
+el Quicksort tendrá un O(n^2).

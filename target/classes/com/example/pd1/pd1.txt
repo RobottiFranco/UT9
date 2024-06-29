@@ -1,0 +1,38 @@
+EJERCICIO 1
+
+1) ¿cómo se genera un vector monótonamente ascendente?
+Se genera con un bucle for que en cada vuelta insertará el valor i en la posicion
+i del vector.
+2) ¿cómo se genera un vector monótonamente descendente?
+Se genera con un bucle for que en cada vuelta insertará en la posicion
+i del vector el valor tamaño del vector - i.
+3) ¿cómo se genera un vector con valores aleatorios? ¿pueden existir claves repetidas? ¿cuál es el orden
+del tiempo de ejecución de este método?
+Se genera con la función Random de Java, también con un for se irá recorriendo
+un vector, y en cada posición genero un nuevo random, para que esté en el rango
+del tamaño del vector, le aplico un modulo. Además, en paralelo tengo un segundo vector de booleanos
+en donde en la posicion que equivale al random generado guardo true.
+Por este segundo vector, no pueden existir claves repetidas. El método tiene un
+orden del tiempo de ejecución de O(n^2) en el peor caso.
+4) ¿cuántos elementos contiene el vector de datos generado?¿cómo se puede modificar esta clase para
+que la cantidad de elementos del vector sea parametrizable?
+El vector de datos tiene la cantidad de elementos que indico a través de la variable estática TAMANIO_MAX.
+Perfectamente podría pasar este tamaño del vector por parámetro. Ejemplificando, generarDatosAscendentes
+quedaría:
+	public int[] generarDatosAscendentes(int TAMANIO_MAX) {
+		int [] copiaAscendente = new int[TAMANIO_MAX];
+		for (int i = 0; i < TAMANIO_MAX; i++) {
+			copiaAscendente[i] = i;
+		}
+		return copiaAscendente;
+	}
+
+5) ¿cómo podemos verificar que un conjunto está ordenado? ¿cuál sería el orden del tiempo de ejecución
+de un algoritmo que lo haga?
+Existen distintos métodos para ordenar vectores, uno es el conocido quicksort.
+Lo que se puede hacer es ordenar una copia del vector a través de quicksort, y luego
+compararlo posición a posición con el original. Quicksort es de O(n*logn), comparar un
+vector posición por posición sería O(n), por lo que resulta en un O(n^2*logn)
+
+EJERCICIO 2 --> hecho en java, los tiempos de ejecución están explicados
+al final de la clase TClasificador.

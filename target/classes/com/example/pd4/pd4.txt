@@ -1,0 +1,54 @@
+EJERCICIO 1
+Existen varias secuencias de incremento conocidas, entre ellas:
+
+Intervalo Tokuda
+Formula: ceiling( (9 * (9/4)^n – 4) / 5).
+Secuencia: 1, 4, 9, 20, 46, 103, 233
+
+Intervalo de Hibbard
+Formula: 2k-1
+Secuencia: 1, 3, 7, 15, 31
+
+Intervalo de Papernov & Stasevich:
+Formula: 2k+1
+Secuencia: 1, 3, 5, 9, 17, 33, 65
+
+Información extraída de:
+https://www.mycplus.com/featured-articles/shell-sort-algorithm/
+
+
+EJERCICIO 2
+La elección del algoritmo es la clave para reducir el orden
+del tiempo de ejecución de Quicksort. Hay distintas formas
+de definir ese pivote: Una sería elegir un número del conjunto de
+forma aleatoria O(1). Otra, tomar 3 elementos aleatorios y elegir
+el medio. Estos 2 algoritmos pueden tener un peor tiempo de O(n^2)
+dependiendo de cómo esté ordenada la secuencia, el primero tiene más
+probabilidad que el segundo.
+Una tercera es hallar el ideal recorriendo todo el arreglo,
+la cual tiene un O(n), asegurando que quicksort sea de O(n*logn), aunque
+es mucho calculo adicional.
+
+
+
+Librerias de lenguajes modernos pivote Quicksort:
+En lo que contré en Internet, lo que hacen es
+tomar ambos extremos del arreglo, y tomar como pivote
+el que sea mayor.
+Información de referencia:
+https://algs4.cs.princeton.edu/23quicksort/QuickDualPivot.java.html
+
+
+EJERCICIO 3
+LN: (primeramente se debe aplicar un algoritmo de ordenación para que ambos
+conjuntos queden ordenados) el algoritmo es muy parecido al Quicksort.
+Contaría con 2 bucles while, cada uno irá recorriendo uno de los conjuntos.
+El exterior el de tamaño mayor, y el interior de tamaño menor, mientras el
+número en el bucle interior sea menor que el del mayor, iterar. Cuando
+deja de cumplirse la condición, chequea con un if si son iguales,
+si no lo son, itera nuevamente el bucle grande, y el valor de comienzo
+del bucle interior es en donde se había quedado en la ronda anterior.
+En caso de terminarse de recorrer el algoritmo pequeño, se termina, siendo
+disjunto. Si en el chequeo del if, son el mismo numero, se hace un break,
+no son disjuntos. El orden del algoritmo es O(m*n), en el caso de que sean
+disjuntos. En el mejor caso, no son disjuntos, por lo que tendrá menor tiempo.

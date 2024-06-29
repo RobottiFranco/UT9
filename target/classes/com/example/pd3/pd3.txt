@@ -1,0 +1,91 @@
+EJERCICIO 1
+Quicksort es un método recursivo, por lo que la condicion que se cumple
+en todo momento, es que en cada llamada recursiva se toman subconjuntos
+disjuntos.
+
+EJERCICIO 2
+
+conjunto inicial: 44 - 55 - 12 - 42 - 94 - 18 - 6 – 67
+
+44i - 55p - 12 - 42 - 94 - 18 - 6 – 67d
+
+44 - 6 - 12 - 42 - 18d | 94i - 55p – 67
+
+
+44pi - 6 - 12 - 42 - 18d	 |	94pi - 55 – 67d
+
+18 - 6 - 12 - 42d | 44pi  		67 - 55id | 94p
+
+
+18pi - 6 - 12 - 42d			67pi - 55d
+
+12 - 6d | 18pi - 42			55p | 67i
+
+
+12pi - 6d	 |	18i - 42pd
+
+6 | 12pi	 |	18d | 42p
+
+
+Conjunto final: 6 - 12 - 18 - 42 - 44 - 55 - 67 - 94
+
+Cantidad de llamadas: 7
+Máximo nivel de profundidad: 4
+
+¿cómo podrías medir este nivel en una implementación en JAVA?
+Creando un quicksort que devuelve un entero correspondiente a la
+profundidad recursiva máxima alcanzada. Para ello, al igual que
+al calcular la altura de un arbol, en cada recursión retornas la
+profundidad máxima.
+
+EJERCICIO 3
+El quicksort que usamos en clase se denomina "basic quicksort", lo que
+usa Java es un quicksort mejorado, denominado "dual-pivot quicksort"
+Si comparamos los tiempos de ejecución, se visibiliza que esta versión
+es mucho más eficiente:
+
+Random Data
+Basic quicksort: 1222 ms
+Dual-pivot quicksort: 1066 ms
+
+Duplicate Data
+Basic quicksort: 378 ms
+Dual-pivot quicksort: 6 ms
+
+
+EJERCICIO 4
+
+quicksort( i,j: tipo entero);
+//clasifica los elementos V[i],..,V[j] del arreglo externo V
+pivote : TipoClave; {el valor del pivote}
+IndicePivote : tipo entero; {el índice de un elemento de V donde clave es el pivote}
+k : tipo entero; {índice al inicio del grupo de elementos >= pivote}
+COM
+1	IndicePivote  EncuentraPivote(i,j); O(1) si el pivote es el mayor entre los dos primeros valores
+2	SI IndicePivote <> 0 entonces {no hacer nada si todas las claves son iguales} O(1)
+3		pivote V[IndicePivote].clave; O(1)
+4		k  particion(i,j,pivote); O(1)
+5		quicksort(i,k-1); O(j-i)	--\ siendo en total
+6		quicksort(k,j); O(j-i)	--/ O(n^2) en el peor caso
+	FIN SI;
+FIN;
+
+El orden del tiempo de ejecución en el peor caso es O(n^2), y es cuando el
+pivote elegido siempre es un extremo del conjunto.
+El caso promedio y el mejor caso es de O(n*logn).
+
+
+¿Cuál es la probabilidad de que se presente este peor caso, cuando la distribución de probabilidades de
+las posiciones de las claves en el conjunto es una distribución uniforme – (es decir, cada clave tiene la
+misma probabilidad de aparecer en cualquier posición del conjunto inicial, en forma independiente de la
+posición de otras claves)
+La probabilidad de que se presente el peor caso es de 1/n, ya que todas
+las claves tendrán la misma probabilidad de ser pivote por tener la
+misma probabilidad de aparecer en cualquier posición del conjunto inicial.
+
+¿Cómo se puede modificar el algoritmo para que, cuando el conjunto es pequeño, se cambie a usar métodos
+directos más sencillos?
+
+Es sabido que para una cantidad pequeña de números, es mejor el uso de otros
+algoritmos. Para hallar a partir de qué número es más eficiente otro algoritmo
+es recomendable cacular sus tiempos de ejecución mismo desde Java.
